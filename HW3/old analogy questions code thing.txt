@@ -1,0 +1,25 @@
+questions_list = list()
+q_bool = False
+ql = list()
+count = 0
+with open("SAT-package-V3.txt", "r") as f:
+    for lines in f:
+        lines = lines.split()
+        if len(lines) >= 2:
+            lines = lines[:2]
+       # print(lines)
+        if len(lines) >0:
+            if lines[0] == "190":
+                q_bool = True
+            if q_bool == True and count <=6 and lines[0] != '190':
+                q_temp = " ".join(lines)
+               # print(q_temp)
+                ql.append(q_temp)
+                count+=1
+                if count == 7:
+                    #print(ql)
+                    count =0
+                    questions_list.append(ql)
+                    ql = list()
+                    q_bool = False
+    #print(questions_list)
